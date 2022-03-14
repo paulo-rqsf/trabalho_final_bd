@@ -19,7 +19,7 @@
     <div class = "container">
         <div class="row">
             <div >
-                <form action="http://localhost:8080/api/order/makeOrder/1:2-3:4-5:6-12:2-13:5" method="POST" accept-charset="ISO-8859-1">
+                <form action="http://localhost:8080/api/order/makeOrder/1:2-3:4-5:6-12:2-13:5" method="POST" accept-charset="UTF-8">
                     <div class="form-group">
                         <hr color="silver">
                         <h2>myCart</h2>
@@ -70,8 +70,8 @@
                                     <td>${product.productName}</td>
                                     <td>${product.productDescription}</td>
                                     <td>R$ ${product.productValue}</td>
-                                    <td><img src="img/${product.productName}.png" width="100" height="100"/></td>
-                                    <td><input name="addtocart${product.productId}" type="button"></td>
+                                    <td><img src="/img/${product.productName}.png" width="100" height="100"/></td>
+                                    <td><input name="addtocart${product.productId}" type="button" value="Add to cart"></td>
                                 </tr>
                             </c:forEach>
                         </table>

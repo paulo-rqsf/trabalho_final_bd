@@ -2,11 +2,8 @@ package br.com.compasso.resources;
 
 import br.com.compasso.models.User;
 import br.com.compasso.services.UserService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.*;
 import br.com.compasso.auth.Auth;
-import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 

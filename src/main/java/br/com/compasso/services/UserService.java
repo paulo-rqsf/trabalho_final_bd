@@ -8,7 +8,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.ws.rs.core.NewCookie;
 import jakarta.ws.rs.core.Response;
 
-import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.time.ZoneId;

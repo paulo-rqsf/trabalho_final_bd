@@ -1,24 +1,14 @@
 package br.com.compasso.resources;
 
 import br.com.compasso.auth.Auth;
-import br.com.compasso.dao.ProductDao;
-import br.com.compasso.dao.StatesDao;
-import br.com.compasso.dao.UserDao;
 import br.com.compasso.models.Address;
-import br.com.compasso.models.Product;
-import br.com.compasso.models.States;
-import br.com.compasso.models.User;
 import br.com.compasso.services.OrderService;
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-
-import java.util.List;
 
 @Path("/order")
 public class OrderResource {

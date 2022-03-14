@@ -14,7 +14,6 @@ import jakarta.ws.rs.core.Response;
 import org.w3c.dom.Element;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 public class OrderService
@@ -33,10 +32,11 @@ public class OrderService
         if(deliveryTime == null || feeValue == null) return Response.status(Response.Status.EXPECTATION_FAILED).entity("Cep inválido").build();
 
         feeValue = feeValue.replaceAll(",", ".");
-        System.out.println(deliveryTime +" "+ feeValue);
+
         Order order = new Order(Double.parseDouble(feeValue), Integer.parseInt(deliveryTime));
         makeOrderProduct(name, productIds, userId, order, address);
-        return Response.status(Response.Status.OK).entity(order).build();
+
+        return Response.status(Response.Status.OK).entity(new ShowOrder(order.getDeliveryTime(), order.getFeeValue(), order.getTotalValue())).build();
     }
 
 
@@ -54,22 +54,15 @@ public class OrderService
         order.setTotalValue(order.getFeeValue() + getTotalOrderProduct(order.getOrderProductList()));
         order.setUser(user);
         orderDao.save(order);
-
-        System.out.println(userId);
-        System.out.println(user);
-        System.out.println(order);
     }
 
     private User updateUser(String name, String userId, Address address) {
         UserDao userDao = new UserDao();
         User user = userDao.readId(Long.parseLong(userId));
-        if(user.getAddress() == null){
-            new AddressDao().save(address);
-            user.setAddress(address);
-        }
-        if(user.getName() == null) user.setName(name);
+        new AddressDao().save(address);
+        user.setAddress(address);
+        user.setName(name);
 
-        System.out.println(address);
         userDao.update(user);
         return user;
     }

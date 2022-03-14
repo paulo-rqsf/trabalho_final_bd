@@ -3,7 +3,6 @@ package br.com.compasso.dao;
 
 import br.com.compasso.factory.EManagerFactory;
 import br.com.compasso.models.States;
-import br.com.compasso.models.User;
 
 import javax.persistence.EntityManager;
 import java.util.List;
