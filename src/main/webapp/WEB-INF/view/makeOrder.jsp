@@ -64,14 +64,14 @@
                                 <td>Value</td>
                                 <td>-- Add Products --</td>
                             </tr>
-                            <c:forEach items="${productList}" var="product">
+                            <c:forEach items="${vaccineList}" var="vaccine">
                                 <tr class="border_bottom">
-                                    <td>${product.productId}</td>
-                                    <td>${product.productName}</td>
-                                    <td>${product.productDescription}</td>
-                                    <td>R$ ${product.productValue}</td>
-                                    <td><img src="/img/${product.productName}.png" width="100" height="100"/></td>
-                                    <td><input name="addtocart${product.productId}" type="button" value="Add to cart"></td>
+                                    <td>${vaccine.productId}</td>
+                                    <td>${vaccine.productName}</td>
+                                    <td>${vaccine.productDescription}</td>
+                                    <td>R$ ${vaccine.productValue}</td>
+                                    <td><img src="/img/${vaccine.productName}.png" width="100" height="100"/></td>
+                                    <td><input name="addtocart${vaccine.productId}" type="button" value="Add to cart"></td>
                                 </tr>
                             </c:forEach>
                         </table>
