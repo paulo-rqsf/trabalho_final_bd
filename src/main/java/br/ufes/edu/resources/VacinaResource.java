@@ -11,6 +11,8 @@ import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+import java.util.List;
+
 @Path("/vacina")
 public class VacinaResource {
 
@@ -29,7 +31,6 @@ public class VacinaResource {
     @Auth
     @POST
     @Path("/registrar")
-    @Produces(MediaType.APPLICATION_JSON)
     public Response registrarVacina(@FormParam("idVacina") String idVacina,
                                     @FormParam("nome") String nome,
                                     @FormParam("descricao") String descricao,
@@ -48,6 +49,14 @@ public class VacinaResource {
                 DateUtil.transformaData(dataValidade),
                 Integer.parseInt(quantidadeDoses),
                 Integer.parseInt(intervaloDoses)));
+    }
+
+    @Auth
+    @GET
+    @Path("/list")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Vacina> list() throws Exception {
+        return vacinaService.listarVacinas();
     }
 
 }

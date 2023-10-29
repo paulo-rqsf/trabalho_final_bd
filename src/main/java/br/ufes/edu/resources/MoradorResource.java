@@ -75,6 +75,13 @@ public class MoradorResource {
     }
 
     @Auth
+    @Path("/admin")
+    @POST
+    public Response admin(@FormParam("cpf") String cpf) throws IOException {
+        return moradorService.admin(cpf);
+    }
+
+    @Auth
     @GET
     @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)

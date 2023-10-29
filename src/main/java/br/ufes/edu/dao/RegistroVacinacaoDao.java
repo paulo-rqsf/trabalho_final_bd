@@ -34,7 +34,7 @@ public class RegistroVacinacaoDao
     }
 
     public List<RegistroVacinacao> lerRegistrosVacinacao(String numSus) {
-        String sql = "SELECT * FROM Registro_Vacinacao WHERE NUM_SUS = ?";
+        String sql = "SELECT * FROM Registro_Vacinacao WHERE CPF = ?";
         List<RegistroVacinacao> registros = new ArrayList<>();
 
         try (PreparedStatement pstm = connection.prepareStatement(sql)) {
@@ -65,7 +65,7 @@ public class RegistroVacinacaoDao
         try (ResultSet rst = pstm.getResultSet()) {
             while (rst.next()) {
                 RegistroVacinacao registro = new RegistroVacinacao(
-                        rst.getInt(1),
+                        rst.getLong(1),
                         rst.getString(2),
                         rst.getInt(3),
                         rst.getDate(4)

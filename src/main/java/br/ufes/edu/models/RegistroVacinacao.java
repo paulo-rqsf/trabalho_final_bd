@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class RegistroVacinacao {
 
-    private int idRegistro;
+    private Long idRegistro;
     private String numeroSus;
     private int idVacina;
     private Date dataAdministracao;

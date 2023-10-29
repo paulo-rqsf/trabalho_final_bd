@@ -144,6 +144,7 @@
                 <div class="form-group">
                     <hr color="silver">
                     <button type="submit" class="btn btn-success">Register</button>
+                    <a href="/" class="btn btn-danger">Voltar</a>
                 </div>
             </form>
         </div>

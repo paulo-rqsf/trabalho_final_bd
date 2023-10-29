@@ -48,7 +48,7 @@
         </tbody>
     </table>
 
-    <a href="/redirect?forward=areaMorador.jsp" class="btn btn-danger">Voltar</a>
+    <a href="/redirectToArea" class="btn btn-danger">Voltar</a>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

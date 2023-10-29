@@ -7,8 +7,10 @@
     <style>
         body {
             background-image: url('../../img/Cidadao.jpg');
-            background-size: cover;
+            background-position-x: center;
+            background-position-y: 200px;
             background-repeat: no-repeat;
+            background-size: 1400px;
         }
 
         .container {

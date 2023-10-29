@@ -47,9 +47,9 @@ public class MoradorService {
                 NewCookie cookie = new NewCookie("token", "Bearer " + jwtToken, "/", "localhost", "token", 60*60, false, true);
 
                 if (morador.isAdmin()) {
-                    return Response.seeOther(URI.create("http://localhost:8080/redirect?forward=areaAdmin.jsp")).cookie(cookie).entity(jwtToken).build();
+                    return Response.seeOther(URI.create("http://localhost:8080/redirect?forward=areaAdmin.jsp")).cookie(cookie).build();
                 }
-                return Response.seeOther(URI.create("http://localhost:8080/redirect?forward=areaMorador.jsp")).cookie(cookie).entity(jwtToken).build();
+                return Response.seeOther(URI.create("http://localhost:8080/redirect?forward=areaMorador.jsp")).cookie(cookie).build();
             }
             return Response.status(Response.Status.UNAUTHORIZED).entity("Usuario e/ou senha Invalidos!").build();
         }
@@ -60,7 +60,7 @@ public class MoradorService {
     }
 
     public Response loggout() {
-        NewCookie cookie = new NewCookie("token", "", "/", "localhost", "token", 0, false, true);
+        NewCookie cookie = new NewCookie("token", "", "/", "localhost", "token", 0, false, false);
         return Response.seeOther(URI.create("http://localhost:8080/login")).cookie(cookie).build();
 
     }
@@ -80,6 +80,23 @@ public class MoradorService {
             System.out.println(Arrays.toString(e.getStackTrace()));
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
         }
+    }
+
+    public Response admin(String cpf) {
+        Morador morador = dao.readUser(cpf);
+        if (morador != null) {
+            if (morador.isAdmin()) {
+                return Response.status(Response.Status.OK).entity("Admin").build();
+            }
+            dao.update(morador);
+            return Response.status(Response.Status.OK).entity("Morador atualizado").build();
+        }
+        return Response.status(Response.Status.NOT_FOUND).entity("Morador não encontrado").build();
+
+    }
+
+    public Morador getMorador(String cpf) {
+        return dao.readUser(cpf);
     }
 
     public Response listAllUsers() {

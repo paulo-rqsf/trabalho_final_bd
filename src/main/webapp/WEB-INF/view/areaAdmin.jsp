@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-image: url('../../img/Cidadao.jpg');
-            background-size: cover;
+            background-image: url('../../img/Admin.jpg');
             background-repeat: no-repeat;
+            background-size: 500px;
         }
 
         .container {
@@ -28,8 +28,11 @@
     <p>Bem vindo! Escolha uma opção:</p>
 
     <a href="/api/vacina/forward" class="btn btn-primary">Registrar nova Vacina</a>
-    <a href="/api/vacina/list" class="btn btn-primary">Listar Vacinas</a>
-    <a href="/api/registros-vacinacao/administrar" class="btn btn-primary">Administrar Vacinação</a>
+    <a href="/api/vacina/list" class="btn btn-secondary">Listar Vacinas</a>
+    <a href="/api/registros-vacinacao/administrar" class="btn btn-warning">Administrar Vacinação</a>
+    <a href="/api/registros-vacinacao/list" class="btn btn-info">Ver Registros de Vacinação</a>
+    <a href="/api/user/list" class="btn btn-dark">Ver Usuários</a>
+    <a href="/redirect?forward=registrarAdmin.jsp" class="btn btn-primary">Registrar novo Admin</a>
     <a href="/api/user/loggout" class="btn btn-danger">Sair</a>
 </div>
 

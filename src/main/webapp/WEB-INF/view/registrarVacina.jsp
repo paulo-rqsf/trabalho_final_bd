@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <style>
         .container {
-            padding: 120px;
+            padding: 100px;
         }
         .padding-class {
             padding: 8px 0 8px 0;
@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group">
                     <label class="padding-class">Descrição: </label>
-                    <input type="password" class="form-control" name="descricao" placeholder="Descrição" required>
+                    <input type="text" class="form-control" name="descricao" placeholder="Descrição" required>
                 </div>
                 <div class="form-group">
                     <label class="padding-class">Lote:</label>
@@ -78,6 +78,7 @@
                 <div class="form-group">
                     <hr color="silver">
                     <button type="submit" class="btn btn-success">Register</button>
+                    <a href="/redirect?forward=areaAdmin.jsp" class="btn btn-danger">Voltar</a>
                 </div>
             </form>
         </div>

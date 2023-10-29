@@ -14,6 +14,7 @@ import java.net.URI;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 public class VacinaService
 {
@@ -29,23 +30,26 @@ public class VacinaService
     }
 
     public Response registrarVacina(Vacina vacina) throws Exception {
-        return Response.seeOther(URI.create("https://www.google.com")).build();
+
+        Vacina vacinaExistente = vacDao.readId(vacina.getIdVacina());
+        try {
+            if (vacinaExistente != null) {
+                throw new Exception("Vacina já cadastrada!");
+            }
+            vacDao.save(vacina);
+            return Response.seeOther(URI.create("http://localhost:8080/redirect?forward=areaAdmin.jsp")).build();
+
+        } catch (Exception e) {
+            return Response.seeOther(URI.create("http://localhost:8080/redirect?forward=errorRegistroVacina.jsp")).build();
+        }
+    }
+
+    public List<Vacina> listarVacinas() throws Exception {
+        return vacDao.readAll();
     }
 
     public void registrarVacinaForward(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/view/registrarVacina.jsp").forward(request, response);
     }
 
-    public void getRegistroVacinacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        request.getRequestDispatcher("/WEB-INF/view/registroVacinacao.jsp").forward(request, response);
-    }
-
-    public boolean isNumeric(String id){
-        try {
-            return Long.parseLong(id) > 0;
-        }catch (Exception e){
-            return false;
-        }
-    }
 }

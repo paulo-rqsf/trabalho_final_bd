@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Error_404</title>
+    <title>Error</title>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -12,16 +12,18 @@
         <div class="col-md-12">
             <div class="error-template">
                 <h1>
-                    Oops!</h1>
-                <h2>
-                    404 Not Found</h2>
+                    Ops!</h1>
                 <div class="error-details">
-                    Sorry, an error has occured, Requested page not found!
+                    Algo deu errado! Vacina pode já estar cadastrada ou o usuário não tem permissão para cadastrar vacinas.
                 </div>
                 <br>
                 <div class="error-actions">
-                    <a href="/redirectToArea" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
-                        Take Me Home </a>
+                    <a href="http://www.localhost:8080/api/vacina/forward" class="btn btn-primary btn-lg"><span></span>
+                        Tentar cadastrar novamente </a>
+                </div>
+                <div class="error-actions">
+                    <a href="http://www.localhost:8080/redirect?forward=areaAdmin.jsp" class="btn btn-green btn-lg"><span></span>
+                        Voltar para a Área do Administrador </a>
                 </div>
             </div>
         </div>

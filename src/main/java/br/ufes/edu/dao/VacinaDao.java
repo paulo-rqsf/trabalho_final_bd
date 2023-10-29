@@ -19,7 +19,7 @@ public class VacinaDao
     }
 
     public List<Vacina> readAll() {
-        String sql = "SELECT * FROM Vaccines";
+        String sql = "SELECT * FROM Vacinas";
         List<Vacina> vacinas = new ArrayList<>();
 
         try (PreparedStatement pstm = connection.prepareStatement(sql)) {
@@ -32,17 +32,45 @@ public class VacinaDao
         }
     }
 
-    public List<Vacina> readId(Long id){
-        String sql = "SELECT * FROM VACCINES WHERE vaccine_id = ?";
-        List<Vacina> vacinas = new ArrayList<>();
+    public Vacina readId(Long id){
+        String sql = "SELECT * FROM Vacinas WHERE ID_VACINA = ?";
 
         try (PreparedStatement pstm = connection.prepareStatement(sql)) {
             pstm.setLong(1, id);
             pstm.execute();
 
-            return fillList(vacinas, pstm);
+            try(ResultSet rst = pstm.getResultSet()) {
+                rst.next();
+                return new Vacina(
+                        rst.getLong(1),
+                        rst.getString(2),
+                        rst.getString(3),
+                        rst.getString(4),
+                        rst.getString(5),
+                        rst.getDate(6),
+                        rst.getInt(7),
+                        rst.getInt(8)
+                );
+            }
         } catch(SQLException e) {
-            throw new RuntimeException(e);
+            return null;
+        }
+    }
+
+    public void save(Vacina vacina) throws SQLException {
+        String sql = "INSERT INTO Vacinas (ID_VACINA, NOME, DESCRICAO, LOTE, FABRICANTE, DATA_VALIDADE, QUANTIDADE_DOSES, INTERVALO_DOSES) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+            pstm.setLong(1, vacina.getIdVacina());
+            pstm.setString(2, vacina.getNome());
+            pstm.setString(3, vacina.getDescricao());
+            pstm.setString(4, vacina.getLote());
+            pstm.setString(5, vacina.getFabricante());
+            pstm.setDate(6, new java.sql.Date(vacina.getDataValidade().getTime()));
+            pstm.setInt(7, vacina.getQuantidadeDoses());
+            pstm.setInt(8, vacina.getIntervaloDoses());
+
+            pstm.execute();
         }
     }
 

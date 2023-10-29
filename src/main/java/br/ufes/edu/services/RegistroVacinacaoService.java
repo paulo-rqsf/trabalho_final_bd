@@ -39,11 +39,8 @@ public class RegistroVacinacaoService
 
     public void listarRegistros(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Cookie[] cookies = request.getCookies();
-        String token = null;
-        for (Cookie cookie : cookies) {
-            if(cookie.getName().equals("token")) token = cookie.getValue();
-        }
+        String token = Jwt.getToken(request);
+
         if(token != null) {
             String cpf = Jwt.jwtDecrypt(token);
             String numSus = morDao.getNumSus(cpf);

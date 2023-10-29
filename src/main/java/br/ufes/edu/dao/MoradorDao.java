@@ -173,4 +173,16 @@ public class MoradorDao
         Endereco add = new Endereco(rst.getString(11), rst.getString(12), rst.getInt(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getString(17));
         return new Morador(rst.getString(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getDate(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(18), rst.getString(19), rst.getString(20), rst.getBoolean(21), rst.getBoolean(22), add);
     }
+
+    public void update(Morador morador) {
+        String sql = "UPDATE Morador SET ADMIN = true WHERE CPF = ?";
+        try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+
+            pstm.setString(1, morador.getCpf());
+            pstm.execute();
+
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
