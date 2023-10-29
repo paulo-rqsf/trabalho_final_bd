@@ -63,6 +63,24 @@ public class MoradorDao
         }
     }
 
+    public String getNumSus(String cpf) {
+        String sql = "SELECT NUMERO_SUS FROM Morador WHERE cpf = ?";
+
+        try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+            pstm.setString(1, cpf);
+            pstm.execute();
+
+            try (ResultSet rst = pstm.getResultSet()) {
+                if (rst.next()) {
+                    return rst.getString(1);
+                }
+                return null;
+            }
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public Morador readUserCpfOrEmail(String username) {
         String sql = "SELECT * FROM Morador WHERE cpf = ? OR email = ?";
 

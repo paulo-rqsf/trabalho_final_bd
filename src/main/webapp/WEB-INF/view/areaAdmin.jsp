@@ -24,10 +24,10 @@
 <body>
 
 <div class="container">
-    <h1>Área do Morador</h1>
+    <h1>Área do Administrador</h1>
     <p>Bem vindo! Escolha uma opção:</p>
 
-    <a href="/registroVacinacao" class="btn btn-primary">Ver Registro de Vacinação</a>
+    <a href="/api/vacina/forward" class="btn btn-primary">Registrar nova Vacina</a>
     <a href="/api/user/loggout" class="btn btn-danger">Sair</a>
 </div>
 

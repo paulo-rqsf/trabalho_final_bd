@@ -4,6 +4,7 @@ import br.ufes.edu.auth.Auth;
 import br.ufes.edu.models.Endereco;
 import br.ufes.edu.models.Morador;
 import br.ufes.edu.services.MoradorService;
+import br.ufes.edu.util.DateUtil;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -54,7 +55,7 @@ public class MoradorResource {
                         cpf,
                         numeroSus,
                         nomeSocial,
-                        moradorService.transformaData(dataNascimento),
+                        DateUtil.transformaData(dataNascimento),
                         moradorService.transformaSexo(sexo),
                         nomeMae,
                         telefone,

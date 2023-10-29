@@ -1,51 +1,50 @@
 package br.ufes.edu.services;
 
+import br.ufes.edu.dao.MoradorDao;
+import br.ufes.edu.dao.RegistroVacinacaoDao;
 import br.ufes.edu.dao.VacinaDao;
 import br.ufes.edu.factory.ConnectionFactory;
-import br.ufes.edu.models.Vacina;
+import br.ufes.edu.models.Morador;
+import br.ufes.edu.util.Jwt;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.core.Response;
 
 import java.beans.PropertyVetoException;
 import java.io.IOException;
-import java.net.URI;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Date;
 
-public class VacinaService
+public class RegistroVacinacaoService
 {
-    VacinaDao vacDao;
+    RegistroVacinacaoDao vacRecDao;
+    MoradorDao morDao;
 
-    public VacinaService() {
+    public RegistroVacinacaoService() {
         try {
             Connection conn = new ConnectionFactory().getConnection();
-            vacDao = new VacinaDao(conn);
+            vacRecDao = new RegistroVacinacaoDao(conn);
+            morDao = new MoradorDao(conn);
         } catch (SQLException | PropertyVetoException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public Response registrarVacina(Vacina vacina) throws Exception {
-        return Response.seeOther(URI.create("https://www.google.com")).build();
-    }
-
-    public void registrarVacinaForward(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/view/registrarVacina.jsp").forward(request, response);
-    }
-
     public void getRegistroVacinacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        Cookie[] cookies = request.getCookies();
+        String token = null;
+        for (Cookie cookie : cookies) {
+            if(cookie.getName().equals("token")) token = cookie.getValue();
+        }
+        if(token != null) {
+            String cpf = Jwt.jwtDecrypt(token);
+            String numSus = morDao.getNumSus(cpf);
+            request.setAttribute("registrosList", vacRecDao.lerRegistrosVacinacao(numSus));
+        }
         request.getRequestDispatcher("/WEB-INF/view/registroVacinacao.jsp").forward(request, response);
     }
 
-    public boolean isNumeric(String id){
-        try {
-            return Long.parseLong(id) > 0;
-        }catch (Exception e){
-            return false;
-        }
-    }
 }

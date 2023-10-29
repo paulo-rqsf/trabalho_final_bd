@@ -46,6 +46,9 @@ public class MoradorService {
 
                 NewCookie cookie = new NewCookie("token", "Bearer " + jwtToken, "/", "localhost", "token", 60*60, false, true);
 
+                if (morador.isAdmin()) {
+                    return Response.seeOther(URI.create("http://localhost:8080/redirect?forward=areaAdmin.jsp")).cookie(cookie).entity(jwtToken).build();
+                }
                 return Response.seeOther(URI.create("http://localhost:8080/redirect?forward=areaMorador.jsp")).cookie(cookie).entity(jwtToken).build();
             }
             return Response.status(Response.Status.UNAUTHORIZED).entity("Usuario e/ou senha Invalidos!").build();
@@ -95,10 +98,5 @@ public class MoradorService {
             return "F";
         else
             return "O";
-    }
-
-    public Date transformaData(String dataNascimento) throws ParseException {
-        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        return formatter.parse(dataNascimento);
     }
 }
