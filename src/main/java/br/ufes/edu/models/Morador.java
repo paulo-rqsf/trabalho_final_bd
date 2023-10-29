@@ -4,15 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 @Getter
 @Setter
 @AllArgsConstructor
-public class User {
+public class Morador {
 
     private String nome;
+    private String email;
+    private String senha;
     private String cpf;
     private String numeroSus;
     private String nomeSocial;
@@ -20,14 +21,16 @@ public class User {
     private String sexo;
     private String nomeMae;
     private String telefone;
-    private String email;
-    private String senha;
-    private Address address;
+    private String estadoCivil;
+    private String escolaridade;
+    private String etnia;
+    private boolean temPlanoSaude;
+    private Endereco endereco;
 
-    public User() {
+    public Morador() {
     }
 
-    public User(Scanner cidadaoCsv) {
+    public Morador(Scanner cidadaoCsv) {
         this.nome = cidadaoCsv.next();
         this.nomeSocial = cidadaoCsv.next();
         this.dataNascimento = cidadaoCsv.next();
@@ -35,13 +38,13 @@ public class User {
         this.nomeMae = cidadaoCsv.next();
         this.telefone = cidadaoCsv.next();
         this.email = cidadaoCsv.next();
-        this.address.setCep(cidadaoCsv.next());
-        this.address.setLogradouro(cidadaoCsv.next());
-        this.address.setBairro(cidadaoCsv.next());
-        this.address.setNumero(cidadaoCsv.nextInt());
-        this.address.setComplemento(cidadaoCsv.next());
-        this.address.setCidade(cidadaoCsv.next());
-        this.address.setUf(cidadaoCsv.next());
+        this.endereco.setCep(cidadaoCsv.next());
+        this.endereco.setLogradouro(cidadaoCsv.next());
+        this.endereco.setBairro(cidadaoCsv.next());
+        this.endereco.setNumero(cidadaoCsv.nextInt());
+        this.endereco.setComplemento(cidadaoCsv.next());
+        this.endereco.setCidade(cidadaoCsv.next());
+        this.endereco.setUf(cidadaoCsv.next());
     }
 
 }
