@@ -7,16 +7,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Address
+public class Endereco
 {
 
     private String cep;
     private String logradouro;
+    private int numero;
     private String bairro;
     private String cidade;
-    private String complemento;
     private String uf;
-    private int numero;
+    private String complemento;
 
-    public Address() {}
+    public Endereco() {}
 }

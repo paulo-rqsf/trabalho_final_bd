@@ -3,6 +3,7 @@ package br.ufes.edu.factory;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import javax.sql.DataSource;
+import java.beans.PropertyVetoException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -10,16 +11,17 @@ public class ConnectionFactory {
 
     private final DataSource dataSource;
 
-    public ConnectionFactory() {
+    public ConnectionFactory() throws PropertyVetoException {
         ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
-        comboPooledDataSource.setJdbcUrl("jdbc:mysql://localhost/sistema?useTimezone=true&serverTimezone=UTC");
+        comboPooledDataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
+        comboPooledDataSource.setJdbcUrl("jdbc:mysql://localhost:3306/sistema?useTimezone=true&serverTimezone=UTC");
         comboPooledDataSource.setUser("root");
         comboPooledDataSource.setPassword("root");
 
         this.dataSource = comboPooledDataSource;
     }
 
-    public static Connection getConnection() throws SQLException {
+    public Connection getConnection() throws SQLException {
         return this.dataSource.getConnection();
     }
 }

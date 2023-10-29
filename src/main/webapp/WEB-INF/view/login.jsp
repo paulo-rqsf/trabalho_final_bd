@@ -20,12 +20,12 @@
                         <h2>Login</h2>
                     </div>
                     <div class="form-group">
-                        <label>Username: </label>
-                        <input type="text" class="form-control" name="username" placeholder="Username" required>
+                        <label>Email ou CPF: </label>
+                        <input type="text" class="form-control" name="username" placeholder="Email ou CPF" required>
                     </div>
                     <div class="form-group">
-                        <label>Password: </label>
-                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+                        <label>Senha: </label>
+                        <input type="password" class="form-control" name="senha" placeholder="Senha" required>
                     </div>
                     <div class="form-group">
                         <hr color="silver">

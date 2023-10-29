@@ -9,12 +9,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet(urlPatterns = "/login")
-public class Login extends HttpServlet {
+@WebServlet(urlPatterns = {"/redirect"})
+public class RedirectServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request,response);
+
+        String forwardPage = request.getParameter("forward");
+        request.getRequestDispatcher("/WEB-INF/view/" + forwardPage).forward(request,response);
     }
 
 }
