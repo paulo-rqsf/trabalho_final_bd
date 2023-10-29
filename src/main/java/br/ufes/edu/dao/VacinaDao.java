@@ -49,20 +49,16 @@ public class VacinaDao
     private List<Vacina> fillList(List<Vacina> vacinas, PreparedStatement pstm) throws SQLException {
         try (ResultSet rst = pstm.getResultSet()) {
             while (rst.next()) {
-                // Create for me a new Vaccine
                 Vacina vacina = new Vacina(
                         rst.getLong(1),
                         rst.getString(2),
                         rst.getString(3),
                         rst.getString(4),
                         rst.getString(5),
-                        rst.getString(6),
+                        rst.getDate(6),
                         rst.getInt(7),
-                        rst.getInt(8),
-                        rst.getInt(9)
+                        rst.getInt(8)
                 );
-
-                // Add this Vaccine to my list
                 vacinas.add(vacina);
             }
 

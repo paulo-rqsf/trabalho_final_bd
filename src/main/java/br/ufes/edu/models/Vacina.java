@@ -12,6 +12,6 @@ import java.util.Date;
 public class Vacina {
     private Long idVacina;
     private String nome, descricao, lote, fabricante;
-    private String dataValidade;
-    private int quantidadeDoses, intervaloDoses, diasParaSegundaDose;
+    private Date dataValidade;
+    private int quantidadeDoses, intervaloDoses;
 }

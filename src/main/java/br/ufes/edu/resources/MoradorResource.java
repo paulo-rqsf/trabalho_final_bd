@@ -9,6 +9,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 @Path("/user")
 public class MoradorResource {
@@ -43,7 +44,7 @@ public class MoradorResource {
                              @FormParam("estadoCivil") String estadoCivil,
                              @FormParam("escolaridade") String escolaridade,
                              @FormParam("etnia") String etnia,
-                             @FormParam("temPlano") String temPlano) throws IOException {
+                             @FormParam("temPlano") String temPlano) throws ParseException {
 
         return moradorService.register(
                 new Morador(
@@ -53,7 +54,7 @@ public class MoradorResource {
                         cpf,
                         numeroSus,
                         nomeSocial,
-                        dataNascimento,
+                        moradorService.transformaData(dataNascimento),
                         moradorService.transformaSexo(sexo),
                         nomeMae,
                         telefone,
@@ -61,7 +62,15 @@ public class MoradorResource {
                         escolaridade,
                         etnia,
                         moradorService.transformaTemPlano(temPlano),
+                        false,
                         new Endereco(cep, logradouro, numero, bairro, cidade, uf, complemento)));
+    }
+
+    @Auth
+    @Path("/loggout")
+    @GET
+    public Response loggout() {
+        return moradorService.loggout();
     }
 
     @Auth

@@ -52,7 +52,7 @@
                 </div>
                 <div class="form-group">
                     <label class="padding-class">Data de Nascimento:</label>
-                    <input type="text" class="form-control" name="dataNascimento" placeholder="Data de Nascimento" required>
+                    <input type="date" class="form-control" name="dataNascimento" placeholder="Data de Nascimento" required>
                 </div>
                 <div class="form-group">
                     <label class="padding-class">Sexo:</label>

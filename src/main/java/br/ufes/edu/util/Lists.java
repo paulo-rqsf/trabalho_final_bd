@@ -1,11 +1,11 @@
-package br.ufes.edu.models;
+package br.ufes.edu.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UtilLists {
+public class Lists {
 
     public static Map<String, String> getStatesMap() {
         Map<String, String> states = new HashMap<>();

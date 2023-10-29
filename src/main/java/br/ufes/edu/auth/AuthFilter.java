@@ -11,6 +11,8 @@ import jakarta.ws.rs.ext.Provider;
 
 import java.io.IOException;
 
+import static br.ufes.edu.util.Jwt.jwtDecrypt;
+
 @Provider
 @Auth
 @Priority(Priorities.AUTHENTICATION)
@@ -20,11 +22,7 @@ public class AuthFilter implements ContainerRequestFilter {
         try {
             String authHeader = requestContext.getCookies().get("token").getValue();
             String token = authHeader.substring("Bearer".length()).trim();
-            System.out.println(token);
-            Jwts.parserBuilder()
-                    .setSigningKey(Key.KEY.getPrivate())
-                    .build()
-                    .parseClaimsJws(token);
+            jwtDecrypt(token);
         } catch (Exception e) {
             requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
         }

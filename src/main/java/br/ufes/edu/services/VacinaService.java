@@ -2,9 +2,13 @@ package br.ufes.edu.services;
 
 import br.ufes.edu.dao.VacinaDao;
 import br.ufes.edu.factory.ConnectionFactory;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.core.Response;
 
 import java.beans.PropertyVetoException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -21,7 +25,7 @@ public class VacinaService
         }
     }
 
-    public Response takeVaccine(){
+    public Response registrarVacina(){
 
         return Response.ok().build();
     }
@@ -42,6 +46,10 @@ public class VacinaService
 //        request.getRequestDispatcher("/WEB-INF/view/makeOrder.jsp").forward(request, response);
 //
 //    }
+
+    public void registrarVacinaForward(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/WEB-INF/view/registrarVacinas.jsp").forward(request, response);
+    }
 
 
     public boolean isNumeric(String id){
