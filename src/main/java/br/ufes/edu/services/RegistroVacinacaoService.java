@@ -32,7 +32,12 @@ public class RegistroVacinacaoService
         }
     }
 
-    public void getRegistroVacinacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void getAdministrarVacinacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        request.getRequestDispatcher("/WEB-INF/view/administrarVacinacao.jsp").forward(request, response);
+    }
+
+    public void listarRegistros(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Cookie[] cookies = request.getCookies();
         String token = null;

@@ -27,7 +27,7 @@
     <h1>Área do Morador</h1>
     <p>Bem vindo! Escolha uma opção:</p>
 
-    <a href="/registroVacinacao" class="btn btn-primary">Ver Registro de Vacinação</a>
+    <a href="/api/registros-vacinacao/list" class="btn btn-primary">Ver Registros de Vacinação</a>
     <a href="/api/user/loggout" class="btn btn-danger">Sair</a>
 </div>
 

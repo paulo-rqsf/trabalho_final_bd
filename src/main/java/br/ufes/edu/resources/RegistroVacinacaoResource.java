@@ -17,10 +17,18 @@ public class RegistroVacinacaoResource {
 
     @Auth
     @GET
-    @Path("/forward")
-    public String makeOrderForward(@Context final HttpServletRequest request,
+    @Path("/list")
+    public String listarRegistros(@Context final HttpServletRequest request,
                                    @Context final HttpServletResponse response) throws Exception {
-        registroVacinacaoService.getRegistroVacinacao(request, response);
+        registroVacinacaoService.listarRegistros(request, response);
+        return "";
+    }
+    @Auth
+    @GET
+    @Path("/administrar")
+    public String administrarVacinacao(@Context final HttpServletRequest request,
+                                       @Context final HttpServletResponse response) throws Exception {
+        registroVacinacaoService.getAdministrarVacinacao(request, response);
         return "";
     }
 

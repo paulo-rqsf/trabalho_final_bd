@@ -28,6 +28,8 @@
     <p>Bem vindo! Escolha uma opção:</p>
 
     <a href="/api/vacina/forward" class="btn btn-primary">Registrar nova Vacina</a>
+    <a href="/api/vacina/list" class="btn btn-primary">Listar Vacinas</a>
+    <a href="/api/registros-vacinacao/administrar" class="btn btn-primary">Administrar Vacinação</a>
     <a href="/api/user/loggout" class="btn btn-danger">Sair</a>
 </div>
 
