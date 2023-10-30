@@ -105,7 +105,7 @@ public class MoradorService {
     }
 
     public boolean transformaTemPlano(String temPlano) {
-        return temPlano.equals("Sim");
+        return temPlano.equalsIgnoreCase("sim");
     }
 
     public String transformaSexo(String sexo) {

@@ -46,7 +46,7 @@ public class VacinaResource {
                 descricao,
                 lote,
                 fabricante,
-                DateUtil.transformaData(dataValidade),
+                DateUtil.transformaDataString(dataValidade),
                 Integer.parseInt(quantidadeDoses),
                 Integer.parseInt(intervaloDoses)));
     }

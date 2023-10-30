@@ -28,19 +28,22 @@ public class Jwt
     }
 
     public static String jwtDecrypt(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(Key.KEY.getPrivate())
-                .build()
-                .parseClaimsJws(token)
-                .getBody()
-                .getSubject();
+        try {
+            return Jwts.parserBuilder()
+                    .setSigningKey(Key.KEY.getPrivate())
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody()
+                    .getSubject();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static String getToken(HttpServletRequest request) {
         String cookieHeader = request.getHeader("Cookie");
         String token = null;
 
-        //Complete for me to get cookie= property
         if (cookieHeader != null) {
             String[] cookies = cookieHeader.split(";");
             for (String cookie : cookies) {
@@ -53,7 +56,11 @@ public class Jwt
     }
 
     public static String getSubject(HttpServletRequest request) {
-        String token = getToken(request);
-        return jwtDecrypt(token);
+        try {
+            String token = getToken(request);
+            return jwtDecrypt(token);
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

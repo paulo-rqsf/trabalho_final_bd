@@ -55,7 +55,7 @@ public class MoradorResource {
                         cpf,
                         numeroSus,
                         nomeSocial,
-                        DateUtil.transformaData(dataNascimento),
+                        DateUtil.transformaDataString(dataNascimento),
                         moradorService.transformaSexo(sexo),
                         nomeMae,
                         telefone,

@@ -1,14 +1,16 @@
 package br.ufes.edu.resources;
 
 import br.ufes.edu.auth.Auth;
+import br.ufes.edu.models.RegistroVacinacao;
 import br.ufes.edu.services.RegistroVacinacaoService;
-import br.ufes.edu.services.VacinaService;
+import br.ufes.edu.util.DateUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
-import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+
+import java.util.Date;
 
 @Path("/registros-vacinacao")
 public class RegistroVacinacaoResource {
@@ -25,11 +27,26 @@ public class RegistroVacinacaoResource {
     }
     @Auth
     @GET
-    @Path("/administrar")
-    public String administrarVacinacao(@Context final HttpServletRequest request,
+    @Path("/forward")
+    public String getForm(@Context final HttpServletRequest request,
                                        @Context final HttpServletResponse response) throws Exception {
         registroVacinacaoService.getAdministrarVacinacao(request, response);
         return "";
+    }
+
+    @Auth
+    @POST
+    @Path("/administrar")
+    public Response administrarVacinacao(@FormParam("idRegistro") String idRegistro,
+                                         @FormParam("cpf") String cpf,
+                                         @FormParam("idVacina") String idVacina) throws Exception {
+
+        return registroVacinacaoService.administrarVacinacao(new RegistroVacinacao(
+                Long.parseLong(idRegistro),
+                cpf,
+                Long.parseLong(idVacina),
+                DateUtil.transformaData(new Date()),
+                1));
     }
 
 

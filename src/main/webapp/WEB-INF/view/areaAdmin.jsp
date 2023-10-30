@@ -29,7 +29,7 @@
 
     <a href="/api/vacina/forward" class="btn btn-primary">Registrar nova Vacina</a>
     <a href="/api/vacina/list" class="btn btn-secondary">Listar Vacinas</a>
-    <a href="/api/registros-vacinacao/administrar" class="btn btn-warning">Administrar Vacinação</a>
+    <a href="/api/registros-vacinacao/forward" class="btn btn-warning">Administrar Vacinação</a>
     <a href="/api/registros-vacinacao/list" class="btn btn-info">Ver Registros de Vacinação</a>
     <a href="/api/user/list" class="btn btn-dark">Ver Usuários</a>
     <a href="/redirect?forward=registrarAdmin.jsp" class="btn btn-primary">Registrar novo Admin</a>

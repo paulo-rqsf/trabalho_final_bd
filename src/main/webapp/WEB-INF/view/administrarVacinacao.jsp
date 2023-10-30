@@ -21,7 +21,7 @@
 <div class = "container" style="text-align-all: center">
     <div class="row">
         <div >
-            <form action="/api/user/register" method="POST" accept-charset="UTF-8">
+            <form action="/api/registros-vacinacao/administrar" method="POST" accept-charset="UTF-8">
                 <div class="form-group">
                     <hr color="silver">
                     <h2>Realizar nova Vacinacao</h2>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group">
                     <label class="padding-class">ID Vacina:</label>
-                    <input type="text" class="form-control" name="Informe o ID da vacina" placeholder="E-mail" required>
+                    <input type="text" class="form-control" name="idVacina" placeholder="Informar id da Vacina" required>
                 </div>
 
                 <div class="form-group">

@@ -31,18 +31,22 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">CPF</th>
                 <th scope="col">Numero Sus</th>
                 <th scope="col">Id Vacina</th>
                 <th scope="col">Data Administração</th>
+                <th scope="col">Doses Tomadas</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <c:forEach items="${registrosList}" var="reg">
                     <th scope="row">${reg.idRegistro}</th>
-                    <td>${reg.numeroSus}</td>
+                    <td>${reg.cpf}</td>
+                    <td>${numeroSus}</td>
                     <td>${reg.idVacina}</td>
                     <td>${reg.dataAdministracao}</td>
+                    <td>${reg.dosesTomadas}</td>
                 </c:forEach>
             </tr>
         </tbody>

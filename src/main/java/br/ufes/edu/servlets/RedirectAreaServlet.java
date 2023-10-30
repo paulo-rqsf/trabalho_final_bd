@@ -23,6 +23,10 @@ public class RedirectAreaServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         moradorService = new MoradorService();
         String subject = Jwt.getSubject(request);
+        if (subject == null) {
+            response.sendRedirect("/login");
+            return;
+        }
         Morador morador = moradorService.getMorador(subject);
         try {
             if (morador != null) {
