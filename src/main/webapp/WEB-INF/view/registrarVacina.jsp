@@ -40,11 +40,15 @@
                 </div>
                 <div class="form-group">
                     <label class="padding-class">Lote:</label>
-                    <input type="text" class="form-control" name="lote" placeholder="Lote" required>
+                    <select class="form-select" name="codigoLote" value="codigoLote" required>
+                        <option selected>Selecione</option>
+                        <c:forEach items="${lotes}" var="lote">
+                            <option>${lote}</option>
+                        </c:forEach>
+                    </select>
                 </div>
-                <div class="form-group">
-                    <label class="padding-class">Fabricante:</label>
-                    <input type="text" class="form-control" name="fabricante" placeholder="Fabricante" required>
+                <div class="padding-class">
+                    <a href="/api/lote/forward" class="btn btn-info">Cadastrar novo Lote</a>
                 </div>
                 <div class="form-group">
                     <label class="padding-class">Data de Validade:</label>

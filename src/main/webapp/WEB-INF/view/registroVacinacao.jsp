@@ -39,16 +39,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <c:forEach items="${registrosList}" var="reg">
+            <c:forEach items="${registrosList}" var="reg">
+                <tr>
                     <th scope="row">${reg.idRegistro}</th>
                     <td>${reg.cpf}</td>
                     <td>${numeroSus}</td>
                     <td>${reg.idVacina}</td>
                     <td>${reg.dataAdministracao}</td>
                     <td>${reg.dosesTomadas}</td>
-                </c:forEach>
-            </tr>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
 

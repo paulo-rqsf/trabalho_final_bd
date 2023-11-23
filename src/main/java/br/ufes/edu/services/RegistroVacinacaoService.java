@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RegistroVacinacaoService
 {
@@ -40,6 +42,10 @@ public class RegistroVacinacaoService
     }
 
     public void getAdministrarVacinacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        List<String> vacinas = getListStrings();
+
+        request.setAttribute("vacinas", vacinas);
 
         request.getRequestDispatcher("/WEB-INF/view/administrarVacinacao.jsp").forward(request, response);
     }
@@ -79,6 +85,16 @@ public class RegistroVacinacaoService
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
         }
+    }
+
+    private List<String> getListStrings() {
+        List<Vacina> vacinas = vacDao.readAll();
+        List<String> dtoVacinas = new ArrayList<>();
+
+        for (Vacina vacina : vacinas) {
+            dtoVacinas.add(vacina.getIdVacina() + " - " + vacina.getNome());
+        }
+        return dtoVacinas;
     }
 
 }

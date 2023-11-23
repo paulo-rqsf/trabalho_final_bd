@@ -32,20 +32,18 @@ public class VacinaResource {
     @POST
     @Path("/registrar")
     public Response registrarVacina(@FormParam("idVacina") String idVacina,
+                                    @FormParam("codigoLote") String codigoLote,
                                     @FormParam("nome") String nome,
                                     @FormParam("descricao") String descricao,
-                                    @FormParam("lote") String lote,
-                                    @FormParam("fabricante") String fabricante,
                                     @FormParam("dataValidade") String dataValidade,
                                     @FormParam("quantidadeDoses") String quantidadeDoses,
                                     @FormParam("intervaloDoses") String intervaloDoses) throws Exception {
 
         return vacinaService.registrarVacina(new Vacina(
                 Long.parseLong(idVacina),
+                Long.parseLong(codigoLote.split(" - ")[0].trim()),
                 nome,
                 descricao,
-                lote,
-                fabricante,
                 DateUtil.transformaDataString(dataValidade),
                 Integer.parseInt(quantidadeDoses),
                 Integer.parseInt(intervaloDoses)));

@@ -43,11 +43,10 @@ public class VacinaDao
                 rst.next();
                 return new Vacina(
                         rst.getLong(1),
-                        rst.getString(2),
+                        rst.getLong(2),
                         rst.getString(3),
                         rst.getString(4),
-                        rst.getString(5),
-                        rst.getDate(6),
+                        rst.getDate(5),
                         rst.getInt(7),
                         rst.getInt(8)
                 );
@@ -58,17 +57,16 @@ public class VacinaDao
     }
 
     public void save(Vacina vacina) throws SQLException {
-        String sql = "INSERT INTO Vacinas (ID_VACINA, NOME, DESCRICAO, LOTE, FABRICANTE, DATA_VALIDADE, QUANTIDADE_DOSES, INTERVALO_DOSES) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Vacinas (ID_VACINA, CODIGO_LOTE ,NOME, DESCRICAO, DATA_VALIDADE, QUANTIDADE_DOSES, INTERVALO_DOSES) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement pstm = connection.prepareStatement(sql)) {
             pstm.setLong(1, vacina.getIdVacina());
-            pstm.setString(2, vacina.getNome());
-            pstm.setString(3, vacina.getDescricao());
-            pstm.setString(4, vacina.getLote());
-            pstm.setString(5, vacina.getFabricante());
-            pstm.setDate(6, new java.sql.Date(vacina.getDataValidade().getTime()));
-            pstm.setInt(7, vacina.getQuantidadeDoses());
-            pstm.setInt(8, vacina.getIntervaloDoses());
+            pstm.setLong(2, vacina.getCodigoLote());
+            pstm.setString(3, vacina.getNome());
+            pstm.setString(4, vacina.getDescricao());
+            pstm.setDate(5, new java.sql.Date(vacina.getDataValidade().getTime()));
+            pstm.setInt(6, vacina.getQuantidadeDoses());
+            pstm.setInt(7, vacina.getIntervaloDoses());
 
             pstm.execute();
         }
@@ -79,13 +77,12 @@ public class VacinaDao
             while (rst.next()) {
                 Vacina vacina = new Vacina(
                         rst.getLong(1),
-                        rst.getString(2),
+                        rst.getLong(2),
                         rst.getString(3),
                         rst.getString(4),
-                        rst.getString(5),
-                        rst.getDate(6),
-                        rst.getInt(7),
-                        rst.getInt(8)
+                        rst.getDate(5),
+                        rst.getInt(6),
+                        rst.getInt(7)
                 );
                 vacinas.add(vacina);
             }

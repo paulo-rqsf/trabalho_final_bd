@@ -19,21 +19,12 @@ public class RegistroVacinacaoResource {
 
     @Auth
     @GET
-    @Path("/list")
-    public String listarRegistros(@Context final HttpServletRequest request,
-                                   @Context final HttpServletResponse response) throws Exception {
-        registroVacinacaoService.listarRegistros(request, response);
-        return "";
-    }
-    @Auth
-    @GET
     @Path("/forward")
     public String getForm(@Context final HttpServletRequest request,
                                        @Context final HttpServletResponse response) throws Exception {
         registroVacinacaoService.getAdministrarVacinacao(request, response);
         return "";
     }
-
     @Auth
     @POST
     @Path("/administrar")
@@ -44,9 +35,18 @@ public class RegistroVacinacaoResource {
         return registroVacinacaoService.administrarVacinacao(new RegistroVacinacao(
                 Long.parseLong(idRegistro),
                 cpf,
-                Long.parseLong(idVacina),
+                Long.parseLong(idVacina.split(" - ")[0].trim()),
                 DateUtil.transformaData(new Date()),
                 1));
+    }
+
+    @Auth
+    @GET
+    @Path("/list")
+    public String listarRegistros(@Context final HttpServletRequest request,
+                                  @Context final HttpServletResponse response) throws Exception {
+        registroVacinacaoService.listarRegistros(request, response);
+        return "";
     }
 
 

@@ -17,4 +17,12 @@ public class DateUtil {
         String formatted = formatter.format(dataNascimento);
         return formatter.parse(formatted);
     }
+
+    public static java.sql.Date getDataSql(Date dataNascimento) {
+        return new java.sql.Date(dataNascimento.getTime());
+    }
+
+    public static Date getDataUtil(java.sql.Date dataNascimento) {
+        return new Date(dataNascimento.getTime());
+    }
 }

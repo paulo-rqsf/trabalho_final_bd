@@ -48,7 +48,9 @@ public class VacinaService
         return vacDao.readAll();
     }
 
-    public void registrarVacinaForward(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void registrarVacinaForward(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        List<String> lotes = new LoteService().listarLotesString();
+        request.setAttribute("lotes", lotes);
         request.getRequestDispatcher("/WEB-INF/view/registrarVacina.jsp").forward(request, response);
     }
 

@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <style>
         .container {
-            padding: 120px;
+            padding: 100px;
         }
         .padding-class {
             padding: 8px 0 8px 0;
@@ -21,36 +21,27 @@
 <div class = "container" style="text-align-all: center">
     <div class="row">
         <div >
-            <form action="/api/registros-vacinacao/administrar" method="POST" accept-charset="UTF-8">
+            <form action="/api/lote/registrar" method="POST" accept-charset="UTF-8">
                 <div class="form-group">
                     <hr color="silver">
-                    <h2>Realizar nova Vacinacao</h2>
+                    <h2>Registrar Lote</h2>
                 </div>
                 <div class="form-group">
-                    <label class="padding-class">ID de Registro:</label>
-                    <input type="text" class="form-control" name="idRegistro" placeholder="Id de registro" required>
+                    <label class="padding-class">Codigo Lote:</label>
+                    <input type="text" class="form-control" name="codigoLote" placeholder="Informe o código do lote" required>
                 </div>
                 <div class="form-group">
-                    <label class="padding-class">CPF:</label>
-                    <input type="text" class="form-control" name="cpf" placeholder="Informe o CPF" required>
+                    <label class="padding-class">CNPJ do Fabricante:</label>
+                    <input type="text" class="form-control" name="cnpjFabricante" placeholder="CNPJ do Fabricante" required>
                 </div>
                 <div class="form-group">
-                    <label class="padding-class">Vacinas Disponíveis:</label>
-                    <select class="form-select" name="idVacina" value="idVacina" required>
-                        <option selected>Selecione</option>
-                        <c:forEach items="${vacinas}" var="vacina">
-                            <option>${vacina}</option>
-                        </c:forEach>
-                    </select>
+                    <label class="padding-class">Nome do Fabricante: </label>
+                    <input type="text" class="form-control" name="nomeFabricante" placeholder="Nome do Fabricante" required>
                 </div>
-                <div class="padding-class">
-                    <a href="/api/vacina/forward" class="btn btn-info">Cadastrar Nova Vacina</a>
-                </div>
-
                 <div class="form-group">
                     <hr color="silver">
                     <button type="submit" class="btn btn-success">Register</button>
-                    <a href="/redirectToArea" class="btn btn-danger">Voltar</a>
+                    <a href="/redirect?forward=areaAdmin.jsp" class="btn btn-danger">Voltar</a>
                 </div>
             </form>
         </div>
