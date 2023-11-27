@@ -9,11 +9,11 @@ import java.util.Date;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Vacina {
-
-    private Long idVacina;
+public class Lote
+{
     private Long codigoLote;
-    private String nome, descricao;
-    private Date dataValidade;
-    private int quantidadeDoses, intervaloDoses;
+    private String cnpjFabricante, nomeFabricante;
+    private int quantidadeVacinas;
+    private Date dataFabricacao;
+
 }

@@ -14,7 +14,7 @@
     <div class = "container" style="text-align-all: center">
         <div class="row">
             <div >
-                <form action="http://localhost:8080/api/user/login" method="POST" accept-charset="ISO-8859-1">
+                <form action="/api/user/login" method="POST" accept-charset="ISO-8859-1">
                     <div class="form-group">
                         <hr color="silver">
                         <h2>Login</h2>
@@ -32,7 +32,7 @@
                         <button type="submit" class="btn btn-success">Login</button>
                     </div>
                 </form>
-                <form action="http://localhost:8080/register" method="POST" accept-charset="ISO-8859-1">
+                <form action="/register" method="POST" accept-charset="ISO-8859-1">
                     <button type="submit" class="btn btn-light">Register</button>
                 </form>
             </div>

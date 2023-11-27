@@ -63,6 +63,24 @@ public class MoradorDao
         }
     }
 
+    public String getNumSus(String cpf) {
+        String sql = "SELECT NUMERO_SUS FROM Morador WHERE cpf = ?";
+
+        try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+            pstm.setString(1, cpf);
+            pstm.execute();
+
+            try (ResultSet rst = pstm.getResultSet()) {
+                if (rst.next()) {
+                    return rst.getString(1);
+                }
+                return null;
+            }
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public Morador readUserCpfOrEmail(String username) {
         String sql = "SELECT * FROM Morador WHERE cpf = ? OR email = ?";
 
@@ -116,7 +134,7 @@ public class MoradorDao
             pstm.setString(4, morador.getCpf());
             pstm.setString(5, morador.getNumeroSus());
             pstm.setString(6, morador.getNomeSocial());
-            pstm.setString(7, morador.getDataNascimento());
+            pstm.setDate(7, morador.getDataNascimentoSql());
             pstm.setString(8, morador.getSexo());
             pstm.setString(9, morador.getNomeMae());
             pstm.setString(10, morador.getTelefone());
@@ -153,6 +171,18 @@ public class MoradorDao
 
     private Morador getUser(ResultSet rst) throws SQLException {
         Endereco add = new Endereco(rst.getString(11), rst.getString(12), rst.getInt(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getString(17));
-        return new Morador(rst.getString(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(18), rst.getString(19), rst.getString(20), rst.getBoolean(21), add);
+        return new Morador(rst.getString(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getDate(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(18), rst.getString(19), rst.getString(20), rst.getBoolean(21), rst.getBoolean(22), add);
+    }
+
+    public void update(Morador morador) {
+        String sql = "UPDATE Morador SET ADMIN = true WHERE CPF = ?";
+        try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+
+            pstm.setString(1, morador.getCpf());
+            pstm.execute();
+
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -14,16 +14,16 @@
                 <h1>
                     Ops!</h1>
                 <div class="error-details">
-                    Usuário já cadastrado!
+                    Algo deu errado! Vacina pode já estar cadastrada ou o usuário não tem permissão para cadastrar vacinas.
                 </div>
                 <br>
                 <div class="error-actions">
-                    <a href="/register" class="btn btn-primary btn-lg"><span></span>
-                        Tentar novamente </a>
+                    <a href="/api/vacina/forward" class="btn btn-primary btn-lg"><span></span>
+                        Tentar cadastrar novamente </a>
                 </div>
                 <div class="error-actions">
-                    <a href="/login" class="btn btn-green btn-lg"><span></span>
-                        Tentar login </a>
+                    <a href="/redirect?forward=areaAdmin.jsp" class="btn btn-green btn-lg"><span></span>
+                        Voltar para a Área do Administrador </a>
                 </div>
             </div>
         </div>
