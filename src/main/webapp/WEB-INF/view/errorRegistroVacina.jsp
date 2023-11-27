@@ -18,11 +18,11 @@
                 </div>
                 <br>
                 <div class="error-actions">
-                    <a href="http://www.localhost:8080/api/vacina/forward" class="btn btn-primary btn-lg"><span></span>
+                    <a href="/api/vacina/forward" class="btn btn-primary btn-lg"><span></span>
                         Tentar cadastrar novamente </a>
                 </div>
                 <div class="error-actions">
-                    <a href="http://www.localhost:8080/redirect?forward=areaAdmin.jsp" class="btn btn-green btn-lg"><span></span>
+                    <a href="/redirect?forward=areaAdmin.jsp" class="btn btn-green btn-lg"><span></span>
                         Voltar para a Área do Administrador </a>
                 </div>
             </div>

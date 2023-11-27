@@ -18,11 +18,11 @@
                 </div>
                 <br>
                 <div class="error-actions">
-                    <a href="http://www.localhost:8080/register" class="btn btn-primary btn-lg"><span></span>
+                    <a href="/register" class="btn btn-primary btn-lg"><span></span>
                         Tentar novamente </a>
                 </div>
                 <div class="error-actions">
-                    <a href="http://www.localhost:8080/login" class="btn btn-green btn-lg"><span></span>
+                    <a href="/login" class="btn btn-green btn-lg"><span></span>
                         Tentar login </a>
                 </div>
             </div>
