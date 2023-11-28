@@ -8,7 +8,7 @@ create table Morador(
 	NUMERO_SUS char(15) NOT NULL UNIQUE,
 	NOME_SOCIAL varchar(255),
 	DATA_NASCIMENTO DATE NOT NULL,
-	SEXO char(1) check (sexo in ('M', 'F', 'O')) NOT NULL,
+	SEXO char(1) check (sexo in ('M', 'F')) NOT NULL,
 	NOME_MAE varchar(255) NOT NULL, 
 	TELEFONE char(11) NOT NULL,
 	CEP char(8) NOT NULL, 
@@ -60,6 +60,8 @@ CREATE TABLE Lotes (
     QUANTIDADE_VACINAS INT,
     DATA_FABRICACAO DATE NOT NULL
 );
+
+Select * from Lotes;
 
 CREATE TABLE Vacinas (
     ID_VACINA BIGINT NOT NULL,

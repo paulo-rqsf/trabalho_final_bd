@@ -99,7 +99,6 @@ public class Lists {
         List<String> sexoList = new ArrayList<>();
         sexoList.add("Masculino");
         sexoList.add("Feminino");
-        sexoList.add("Outro");
         return sexoList;
     }
 

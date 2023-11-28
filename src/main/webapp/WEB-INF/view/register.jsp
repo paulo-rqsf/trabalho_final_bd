@@ -55,7 +55,7 @@
                     <input type="date" class="form-control" name="dataNascimento" placeholder="Data de Nascimento" required>
                 </div>
                 <div class="form-group">
-                    <label class="padding-class">Sexo:</label>
+                    <label class="padding-class">Sexo designado ao Nascimento:</label>
                     <select class="form-select" name="sexo" value="sexo" required>
                         <option selected>Selecione</option>
                         <c:forEach items="${sexList}" var="sexo">

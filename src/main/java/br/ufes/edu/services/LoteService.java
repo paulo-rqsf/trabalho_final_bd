@@ -34,7 +34,10 @@ public class LoteService
         Lote loteExistente = loteDao.readId(lote.getCodigoLote());
         try {
             if (loteExistente != null) {
-                throw new Exception("Lote já cadastrada!");
+                throw new Exception("Lote já cadastrado!");
+            }
+            if (lote.getCnpjFabricante() == null || lote.getCnpjFabricante().length() != 14) {
+                return Response.status(403).entity("CNPJ do fabricante inválido! <a href=http://localhost:8080/redirect?forward=areaAdmin.jsp>Voltar</a>").build();
             }
             loteDao.save(lote);
             return Response.seeOther(URI.create("http://localhost:8080/redirect?forward=areaAdmin.jsp")).build();

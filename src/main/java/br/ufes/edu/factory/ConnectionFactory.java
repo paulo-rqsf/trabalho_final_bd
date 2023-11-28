@@ -14,7 +14,7 @@ public class ConnectionFactory {
     public ConnectionFactory() throws PropertyVetoException {
         ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
         comboPooledDataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
-        comboPooledDataSource.setJdbcUrl("jdbc:mysql://localhost:3306/sistema?useTimezone=true&serverTimezone=UTC");
+        comboPooledDataSource.setJdbcUrl("jdbc:mysql://trabalhofinalbd-db-1:3306/sistema?useTimezone=true&serverTimezone=UTC");
         comboPooledDataSource.setUser("root");
         comboPooledDataSource.setPassword("root");
 
